@@ -11,21 +11,22 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
-
 use Illuminate\Database\QueryException;
-
+use App\Http\Requests\UpdateUserRequest;
+use App\Services\UserService;
 
 class UserUpdateController extends Controller
 {
-    public function __construct()
+    protected $userService;
+
+    public function __construct(UserService $userService)
     {
-        $this->middleware('auth');
+        $this->userService = $userService;
     }
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
+
+    public function __invoke(UpdateUserRequest $request)
     {
+
         // dd($request->method());
         $user = User::findOrFail(AppHelper::openDecrypt($request->id));
         // dd($user->id, $request->avatar);
