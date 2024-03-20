@@ -19,7 +19,7 @@ git clone https://github.com/sayedmdabu/User-Management-APP.git
 2. Navigate to the project directory:
 
 ```bash
-cd docker-laravel-setup
+cd User-Management-APP
 ```
 
 
