@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Helpers\AppHelper;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUserRequest extends FormRequest
@@ -23,7 +24,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'email' => 'required|string|email|max:255|unique:users,email,' . AppHelper::openDecrypt($this->route('id')),
             'avatar' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

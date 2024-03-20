@@ -17,10 +17,10 @@ class UserEditController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke($id)
     {
         return view('user.edit', [
-            'user' => User::findOrFail(AppHelper::openDecrypt($request->id))
+            'user' => User::findOrFail(AppHelper::openDecrypt($id))
         ]);
     }
 }

@@ -14,8 +14,7 @@ class UserDeleteController extends Controller
 
         User::findOrFail(AppHelper::openDecrypt($request->id))->delete();
 
-        return redirect()->route('user.list')
-                        ->with('success', 'User soft deleted successfully!');
+        return redirect()->route('user.list')->with('success', 'User soft deleted successfully!');
     }
 
     public function trashed()
@@ -29,15 +28,13 @@ class UserDeleteController extends Controller
     {
         User::withTrashed()->findOrFail(AppHelper::openDecrypt($request->id))->restore();
 
-        return redirect()->route('user.trashed')
-                        ->with('success', 'User restored successfully!');
+        return redirect()->route('user.trashed')->with('success', 'User restored successfully!');
     }
 
     public function forceDelete(Request $request)
     {
         User::withTrashed()->findOrFail(AppHelper::openDecrypt($request->id))->forceDelete();
 
-        return redirect()->route('user.trashed')
-                        ->with('success', 'User permanently deleted!');
+        return redirect()->route('user.trashed')->with('success', 'User permanently deleted!');
     }
 }

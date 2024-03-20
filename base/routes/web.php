@@ -18,7 +18,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', UserViewController::class)->name('user.list');
     Route::get('/edit/{id}', UserEditController::class)->name('user.edit');
-    Route::patch('/update', UserUpdateController::class)->name('user.update');
+    Route::patch('/update/{id}', UserUpdateController::class)->name('user.update');
     Route::get('/single/view/{id}', UserSingleViewController::class)->name('user.view');
 
 

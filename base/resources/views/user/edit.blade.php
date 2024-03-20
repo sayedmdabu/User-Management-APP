@@ -2,7 +2,6 @@
 
 @section('styles')
 
- <!-- Custom styles for this page -->
  <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
 @endsection
@@ -23,14 +22,21 @@
         </div>
         <div class="card-body">
 
-            <form class="user" method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
+            <form class="user"
+                method="POST"
+                action="{{ route('user.update', AppHelper::openEncrypt($user->id)) }}"
+                enctype="multipart/form-data">
                 @csrf
                 @method('patch')
-                <input type="hidden" name="id" value="{{AppHelper::openEncrypt($user->id)}}">
+                {{-- <input type="hidden" name="id" value="{{AppHelper::openEncrypt($user->id)}}"> --}}
 
                 <div class="form-group">
 
-                    <input id="name" type="text" class="form-control form-control-user @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus  placeholder="Full Name">
+                    <input id="name" type="text"
+                    class="form-control form-control-user @error('name') is-invalid @enderror"
+                    name="name"
+                    value="{{ $user->name }}"
+                    required autocomplete="name" autofocus  placeholder="Full Name">
 
                     @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -40,7 +46,10 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" readonly autocomplete="email">
+                    <input id="email" type="email"
+                    class="form-control form-control-user @error('email') is-invalid @enderror"
+                    name="email" value="{{ $user->email }}"
+                    readonly autocomplete="email">
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -62,11 +71,6 @@
                             type="file"
                             class="form-control dropify @error('avatar') is-invalid @enderror"
                             name="avatar" readonly autocomplete="off">
-
-                        {{-- <input type="file" name="avatar"
-                                class="form-control dropify"
-                                data-default-file=""/> --}}
-
 
                         @error('avatar')
                             <span class="invalid-feedback" role="alert">

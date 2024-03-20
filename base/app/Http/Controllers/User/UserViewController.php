@@ -8,14 +8,6 @@ use App\Models\User;
 
 class UserViewController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke(Request $request)
     {
         return view('user.view', [
