@@ -27,7 +27,7 @@ cd User-Management-APP
 
 ```bash
 DB_CONNECTION=mysql
-DB_HOST=mysql
+DB_HOST=mysql_user
 DB_PORT=3306
 DB_DATABASE=laraapp
 DB_USERNAME=laraapp
@@ -35,8 +35,8 @@ DB_PASSWORD=12345678
 
 CACHE_DRIVER=redis
 REDIS_CLIENT=predis
-REDIS_HOST=redis
-REDIS_PORT=8002
+REDIS_HOST=redis_user
+REDIS_PORT=8004
 ```
 
 4. Start the Docker containers:
